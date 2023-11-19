@@ -1,6 +1,6 @@
-# e-Learning Management System
+# e-Course Management System
 
-A learning management and online assessment system for academic education.
+A course management and online assessment system for academic education.
 
 ## Features
 
