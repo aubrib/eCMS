@@ -23,7 +23,7 @@
          <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)"
             href="{% url 'faculty' course.code %}">{{ course.name }}</a></li>
          <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)"
-            href="{% url 'allQuizzes' course.code %}">Quizzes</a></li>
+            href="{% url 'allQuizzes' course.code %}">Tests</a></li>
          <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">
             {{quiz.title}}
          </li>
@@ -67,9 +67,14 @@
          {% endif %}
          <p><span class="material-symbols-outlined inline-icons me-2">
             timelapse
-            </span>Quiz Duration : <span class="fw-bold"> {{ quiz.duration }}</span>
+            </span>Test Duration : <span class="fw-bold"> {{ quiz.duration }}</span>
          </p>
       </div>
+   </div>
+</div>
+<div class="container shadow-sm rounded border">
+   <div class="chart"> 
+      <canvas id="lineChart" height="300" width="300"></canvas>
    </div>
 </div>
 {% if quiz.publish_status %}
@@ -121,7 +126,7 @@
    </table>
 </div>
    {% else %}
-   <div class="text-center">No students have attempted this quiz yet</div>
+   <div class="text-center">No students have attempted this test yet</div>
    {% endif %}
 </div>
 <div class="container">
@@ -172,7 +177,7 @@
 </div>
 {% else %}
 <div class="fw-bold text-center">
-   Quiz not started yet
+   Test not started yet
 </div>
 {% endif %}
 </div>
@@ -238,6 +243,63 @@
         }
     });
     {% endfor %}
+   
+    {% for question in questions %}
+    var data{{question.id}} = {
+        labels: [
+        'A',
+        'B',
+        'C',
+        'D'
+        ],
+        datasets: [{
+            label: 'Time Taken',
+            data: [{{question.A}}, {{question.B}}, {{question.C}}, {{question.D}}],
+            backgroundColor: color,
+            borderColor: color,
+            borderWidth: 1,
+            hoverBorderColor: 'deepskyblue',
+            hoverBorderWidth: 1,
+            hoverBorderRadius: 5,
+            hoverBorderDash: [5, 5],
+            hoverBorderDashOffset: 0.0,
+        }]
+    };
+    {% endfor %}
+    {% for question in questions %}
+    var ctx{{question.id}} = document.getElementById('lineChart').getContext('2d');
+    var myChart{{question.id}} = new Chart(ctx{{question.id}}, {
+        type: 'line',
+        data: data{{question.id}},
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Time Taken on Test',
+                }
+            }, 
+            animation : true,
+            animationSteps : 60,
+            animationEasing : 'easeOutBounce',
+            maintainAspectRatio: false,
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: 'rgb(255, 99, 132)'
+                }
+            },       
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        startAtZero: true  
+                    }
+                }]
+            }
+        }
+    });
+    {% endfor %}
+
    $(document).ready(function () {
     $('.bt').click(function () {
         $('html, body').animate({
