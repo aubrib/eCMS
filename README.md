@@ -1,4 +1,4 @@
-# e-Learning Management System
+# e-Student Learning System
 
 A learning management and online assessment system for academic education.
 
@@ -9,7 +9,7 @@ A learning management and online assessment system for academic education.
 - Students can enroll in the courses using the access key, see the course content of the enrolled courses, participate in assessments and see their results in detail.
 - Discussion section for both teacher and student.
 
-## Relational Schema
+<!-- ## Relational Schema -->
 
 <!-- ![schema](https://user-images.githubusercontent.com/87283264/187967219-55bea00e-3151-488a-a4be-d2a95b9d8a5c.png) -->
 
@@ -21,7 +21,7 @@ A learning management and online assessment system for academic education.
 4. Chart.js v3.9.1
 5. Animate.css 4.1.1
 
-## UI
+<!-- ## UI -->
 
 <!-- ![Screenshot (65)](https://user-images.githubusercontent.com/87283264/194387627-47bc4506-5acb-46da-8ae0-70ea1e7e4eb8.png)
 ![Screenshot (63)](https://user-images.githubusercontent.com/87283264/194389617-1d1118a5-e0a1-41a2-94b6-ef636e6a8d5e.png)
@@ -37,13 +37,13 @@ A learning management and online assessment system for academic education.
 1. Clone the project
 
 ```bash
-git clone https://github.com/aubrib/eSLS.git
+git clone https://github.com/aubrib/eSLS-SWE.git
 ```
 
 2. Go to the project directory
 
 ```bash
-cd eSLS
+cd eSLS-SWE
 ```
 
 3. Create a virtual environment and activate it (Windows)
@@ -96,6 +96,6 @@ Login as admin and add some courses, teacher and students.
 
 <!-- Demo : https://youtu.be/NyL2ajUNxYk -->
 
-## License
+<!-- ## License
 
-[The MIT License (MIT)](https://github.com/nz-m/eLMS-SWE/blob/main/LICENCE)
+[The MIT License (MIT)](https://github.com/nz-m/eLMS-SWE/blob/main/LICENCE) -->
